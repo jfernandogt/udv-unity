@@ -23,13 +23,10 @@ public class ControlJugador : MonoBehaviour
         entradaControl = context.ReadValue<Vector2>();
     }
 
-    public void OnMoveInput(InputAction.CallbackContext context)
+    public void AlSaltar(InputAction.CallbackContext context)
     {
-        Debug.Log("OnMoveInput");
+        movimiento.Saltar(context.action.triggered);
     }
 
-    public void OnJumpInput(InputAction.CallbackContext context)
-    {
-        Debug.Log("OnJumpInput");
-    }
+
 }
