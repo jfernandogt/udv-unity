@@ -11,17 +11,21 @@ public class Movimiento : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
 
+    private Animator animator;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
 
     }
 
     public void Moverse(float movimientoX)
     {
         rb.linearVelocity = new Vector2(movimientoX * velocidadCaminata, rb.linearVelocity.y);
+        animator.SetBool("estaCorriendo", movimientoX != 0);
     }
 
     public void Saltar(bool debeSaltar)
