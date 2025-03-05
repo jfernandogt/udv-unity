@@ -8,10 +8,13 @@ public class Movimiento : MonoBehaviour
     [SerializeField] private float velocidadCaminata = 4f;
     [SerializeField] private float alturaSalto = 4f;
 
+    [SerializeField] private int saltosMaximos = 2;
+
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
 
     private Animator animator;
+    private int contadorSaltos = 0;
 
 
     private void Start()
@@ -28,15 +31,33 @@ public class Movimiento : MonoBehaviour
         animator.SetBool("estaCorriendo", movimientoX != 0);
     }
 
+    private bool estaTocandoCapaDeSalto()
+    {
+        // Retorna true si el BoxCollider2D detecta las capas definidas en capaDeSalto
+        return boxCollider.IsTouchingLayers(capaDeSalto);
+    }
+
+    private void RealizarSalto()
+    {
+        float gravedad = Physics2D.gravity.y * rb.gravityScale;
+        float velInicialSalto = Mathf.Sqrt(2 * Mathf.Abs(gravedad) * alturaSalto);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+    }
+
     public void Saltar(bool debeSaltar)
     {
-        if (!boxCollider.IsTouchingLayers(capaDeSalto)) return;
+        if (estaTocandoCapaDeSalto())
+        {
+            contadorSaltos = 0;
+        }
 
         if (debeSaltar)
         {
-            float gravedad = Physics2D.gravity.y * rb.gravityScale;
-            float velInicialSalto = Mathf.Sqrt(2 * Mathf.Abs(gravedad) * alturaSalto);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+            if (contadorSaltos < saltosMaximos)
+            {
+                RealizarSalto();
+                contadorSaltos++;
+            }
         }
     }
 }
