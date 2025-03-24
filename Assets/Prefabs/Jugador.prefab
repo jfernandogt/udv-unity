@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5926897056692960265}
   - component: {fileID: 2761615972172831815}
   - component: {fileID: 393374491248669968}
+  - component: {fileID: 4672799229063229968}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -327,3 +328,18 @@ MonoBehaviour:
     m_Bits: 448
   velocidadCaminata: 4
   alturaSalto: 4
+  saltosMaximos: 2
+--- !u!114 &4672799229063229968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029943269658441379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e950d25a21b64ef0bf9774226ae2db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proyectilPrefab: {fileID: 1827571278299082052, guid: a9fc2648f57694f599b4bbf24ed357e5, type: 3}
+  puntoDeSalida: {fileID: 0}
