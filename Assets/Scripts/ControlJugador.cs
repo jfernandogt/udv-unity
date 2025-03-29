@@ -19,6 +19,7 @@ public class ControlJugador : MonoBehaviour
     void Update()
     {
         movimiento.Moverse(entradaControl.x);
+        movimiento.Escalar(entradaControl.y);
         if (Mathf.Abs(entradaControl.x) > Mathf.Epsilon)
         {
             movimiento.VoltearTransform(entradaControl.x);

@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 3967793359091320749}
   - component: {fileID: 6258319948785728377}
   - component: {fileID: 7692552322434349774}
+  - component: {fileID: 6033579861763933124}
+  - component: {fileID: 8816438639307532519}
+  - component: {fileID: 7750687786114219323}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -82,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3863635566180601805, guid: bb22e9cd7a3f50c41aa55c47dd8c2975, type: 3}
+  m_Sprite: {fileID: 7862987919487705919, guid: bb22e9cd7a3f50c41aa55c47dd8c2975, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -103,7 +106,7 @@ Animator:
   m_GameObject: {fileID: 904373351404364099}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: e0b95a39b96904388af789480ae8fb8e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -176,7 +179,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.015821457, y: -0.052770197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +189,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9683571, y: 0.78054535}
   m_EdgeRadius: 0
 --- !u!114 &6258319948785728377
 MonoBehaviour:
@@ -200,6 +203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71100376f5624350aa6e007ef25084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Detector: {fileID: 4798930381739025174}
+  distanciaAlSuelo: 0.5
+  layerSuelo:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &7692552322434349774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +222,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capaDeSalto:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 448
   velocidadCaminata: 4
-  alturaSalto: 4
-  saltosMaximos: 2
+  alturaSalto: 2
+  saltosMaximos: 3
+--- !u!114 &6033579861763933124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904373351404364099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3db24f1b91054f3d941e857ae5c5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saludMax: 200
+  destruirAlMorir: 1
+  tiempoEnDestruirse: 0
+  alPerderSalud:
+    m_PersistentCalls:
+      m_Calls: []
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8816438639307532519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904373351404364099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da0b3b3dea03491983f251ba0f6f6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 2
+--- !u!114 &7750687786114219323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904373351404364099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e934449a578364c7688a956fa97606f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantAtaque: 1
 --- !u!1 &1491950340755771378
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +285,7 @@ GameObject:
   m_Layer: 0
   m_Name: Detector
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -243,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 1491950340755771378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.54, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

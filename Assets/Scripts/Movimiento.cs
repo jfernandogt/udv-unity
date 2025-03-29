@@ -6,10 +6,15 @@ using UnityEngine;
 public class Movimiento : MonoBehaviour
 {
     [SerializeField] private LayerMask capaDeSalto;
-    [SerializeField] private float velocidadCaminata = 4f;
-    [SerializeField] private float alturaSalto = 4f;
+    [SerializeField] private LayerMask capaDeEscalera;
 
+    [SerializeField] private float velocidadCaminata = 4f;
+    [SerializeField] private float velocidadEscalar = 4f;
+    [SerializeField] private float alturaSalto = 4f;
     [SerializeField] private int saltosMaximos = 2;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float modificarVelSalto = 0.5f;
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -17,12 +22,16 @@ public class Movimiento : MonoBehaviour
     private Animator animator;
     private int contadorSaltos = 0;
 
+    private float escalaGravedad = 1f;
+
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        escalaGravedad = rb.gravityScale;
 
     }
 
@@ -38,26 +47,25 @@ public class Movimiento : MonoBehaviour
         return boxCollider.IsTouchingLayers(capaDeSalto);
     }
 
-    private void RealizarSalto()
-    {
-        float gravedad = Physics2D.gravity.y * rb.gravityScale;
-        float velInicialSalto = Mathf.Sqrt(2 * Mathf.Abs(gravedad) * alturaSalto);
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
-    }
-
     public void Saltar(bool debeSaltar)
     {
+
         if (estaTocandoCapaDeSalto())
         {
             contadorSaltos = 0;
         }
 
-        if (debeSaltar)
+        if (debeSaltar && contadorSaltos < saltosMaximos)
         {
-            if (contadorSaltos < saltosMaximos)
+            float velocidadInicialSalto = Mathf.Sqrt(-2 * escalaGravedad * Physics2D.gravity.y * alturaSalto);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, velocidadInicialSalto);
+            contadorSaltos++;
+        }
+        else
+        {
+            if (rb.linearVelocity.y > Mathf.Epsilon)
             {
-                RealizarSalto();
-                contadorSaltos++;
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * modificarVelSalto);
             }
         }
     }
@@ -68,5 +76,16 @@ public class Movimiento : MonoBehaviour
             Mathf.Sign(movimientoX) * Mathf.Abs(transform.localScale.x),
             transform.localScale.y
         );
+    }
+
+    public void Escalar(float movimientoY)
+    {
+        if (!boxCollider.IsTouchingLayers(capaDeEscalera))
+        {
+            rb.gravityScale = escalaGravedad;
+            return;
+        }
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, movimientoY * velocidadEscalar);
+        rb.gravityScale = 0f;
     }
 }
