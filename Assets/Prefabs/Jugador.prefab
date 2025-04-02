@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 2761615972172831815}
   - component: {fileID: 393374491248669968}
   - component: {fileID: 4672799229063229968}
+  - component: {fileID: 6614492099071477845}
+  - component: {fileID: 6588733491017578041}
+  - component: {fileID: 4868787122380742856}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -326,9 +329,14 @@ MonoBehaviour:
   capaDeSalto:
     serializedVersion: 2
     m_Bits: 448
+  capaDeEscalera:
+    serializedVersion: 2
+    m_Bits: 0
   velocidadCaminata: 4
+  velocidadEscalar: 4
   alturaSalto: 4
   saltosMaximos: 2
+  modificarVelSalto: 0.5
 --- !u!114 &4672799229063229968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,3 +351,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectilPrefab: {fileID: 1827571278299082052, guid: a9fc2648f57694f599b4bbf24ed357e5, type: 3}
   puntoDeSalida: {fileID: 0}
+--- !u!114 &6614492099071477845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029943269658441379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da0b3b3dea03491983f251ba0f6f6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 1
+--- !u!114 &6588733491017578041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029943269658441379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0482fbc59924440b4266a52ab9ab64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4868787122380742856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029943269658441379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f32a4b02919484aaeaef1fc5194a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
