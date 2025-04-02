@@ -223,9 +223,14 @@ MonoBehaviour:
   capaDeSalto:
     serializedVersion: 2
     m_Bits: 448
+  capaDeEscalera:
+    serializedVersion: 2
+    m_Bits: 0
   velocidadCaminata: 4
+  velocidadEscalar: 4
   alturaSalto: 2
   saltosMaximos: 3
+  modificarVelSalto: 0.5
 --- !u!114 &6033579861763933124
 MonoBehaviour:
   m_ObjectHideFlags: 0
