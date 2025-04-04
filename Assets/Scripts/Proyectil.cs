@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Proyectil : MonoBehaviour
 {
     [SerializeField] private float ataque = 1f;
     [SerializeField] private float velocidad = 5f;
+    [SerializeField] private float tiempoDeVida = 2f;
 
     private Rigidbody2D rb;
     private EquipoEnum equipoEnum;
@@ -11,6 +13,11 @@ public class Proyectil : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        Destroy(gameObject, tiempoDeVida);
     }
 
     public void AjustarEquipoEnum(EquipoEnum equipoEnum)
@@ -25,15 +32,25 @@ public class Proyectil : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.TryGetComponent<Salud>(out Salud saludDelOtro)) {
+        Tilemap tilemap = other.GetComponent<Tilemap>();
+        if (tilemap != null && other.gameObject.layer == LayerMask.NameToLayer("Suelo"))
+        {
+            Destroy(gameObject); // Destruir el proyectil
+            return; // Salir de la función para evitar que se ejecute el resto del código
+        }
+
+        if (!other.gameObject.TryGetComponent<Salud>(out Salud saludDelOtro))
+        {
             return;
         }
 
-        if (!other.gameObject.TryGetComponent<Equipo>(out Equipo equipoDelOtro)) {
+        if (!other.gameObject.TryGetComponent<Equipo>(out Equipo equipoDelOtro))
+        {
             return;
         }
 
-        if (equipoDelOtro.EquipoActual == equipoEnum) {
+        if (equipoDelOtro.EquipoActual == equipoEnum)
+        {
             return;
         }
 

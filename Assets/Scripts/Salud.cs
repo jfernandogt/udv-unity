@@ -1,20 +1,24 @@
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using System.Collections;
 
 public class Salud : MonoBehaviour
 {
     [SerializeField] private float saludMax = 3f;
     [SerializeField] private bool destruirAlMorir = true;
     [SerializeField] private float tiempoEnDestruirse = 0f;
+    [SerializeField] private float tiempoInvencible = 2f;
     [SerializeField] private UnityEvent<float> alPerderSalud;
     [SerializeField] private UnityEvent alMorir;
 
     private float saludActual;
     private Animator animador;
     private bool estaMuerto = false;
+    private bool esInvencible = false;
 
     public event Action alActualizarSalud;
+
 
     private void Awake()
     {
@@ -50,6 +54,11 @@ public class Salud : MonoBehaviour
 
     public void PerderSalud(float saludPerdida)
     {
+        Debug.Log("esInvencible: " + esInvencible);
+        if (esInvencible) // Comprobar si es invencible
+        {
+            return; // No perder salud si es invencible
+        }
         animador.ResetTrigger("perderSalud");
         saludActual = Mathf.Max(saludActual - saludPerdida, 0);
         alPerderSalud?.Invoke(saludPerdida);
@@ -78,5 +87,17 @@ public class Salud : MonoBehaviour
         {
             Destroy(gameObject, tiempoEnDestruirse);
         }
+    }
+
+    public void ActivarInvencibilidad()
+    {
+        esInvencible = true;
+        StartCoroutine(DesactivarInvencibilidad(tiempoInvencible));
+    }
+
+    private IEnumerator DesactivarInvencibilidad(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        esInvencible = false;
     }
 }

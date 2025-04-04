@@ -5968,6 +5968,7 @@ MonoBehaviour:
   saludMax: 100
   destruirAlMorir: 1
   tiempoEnDestruirse: 0
+  tiempoInvencible: 2
   alPerderSalud:
     m_PersistentCalls:
       m_Calls: []
@@ -6341,11 +6342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4104612106808915495, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.16
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 4104612106808915495, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 4104612106808915495, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6378,6 +6379,10 @@ PrefabInstance:
     - target: {fileID: 4104612106808915495, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491860989622991244, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
+      propertyPath: tiempoInvencible
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4672799229063229968, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
       propertyPath: puntoDeSalida
@@ -6634,6 +6639,63 @@ PrefabInstance:
       insertIndex: 9
       addedObject: {fileID: 2047557289}
   m_SourcePrefab: {fileID: 100100000, guid: 816f55f5479a64875820b8d1b7512650, type: 3}
+--- !u!1001 &6477726834819520646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091529696171273476, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849164569986791300, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
+      propertyPath: m_Name
+      value: Pineapple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d790511ba65074b4ea38ed8d4a2eea28, type: 3}
 --- !u!1001 &7583434610296976239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6727,3 +6789,4 @@ SceneRoots:
   - {fileID: 1385589291}
   - {fileID: 1139635825}
   - {fileID: 943118358}
+  - {fileID: 6477726834819520646}

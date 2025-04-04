@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6614492099071477845}
   - component: {fileID: 6588733491017578041}
   - component: {fileID: 4868787122380742856}
+  - component: {fileID: 4491860989622991244}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -388,3 +389,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f32a4b02919484aaeaef1fc5194a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4491860989622991244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029943269658441379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3db24f1b91054f3d941e857ae5c5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saludMax: 3
+  destruirAlMorir: 1
+  tiempoEnDestruirse: 0
+  tiempoInvencible: 2
+  alPerderSalud:
+    m_PersistentCalls:
+      m_Calls: []
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
