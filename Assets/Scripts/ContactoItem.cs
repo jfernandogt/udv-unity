@@ -6,6 +6,8 @@ public class ContactoItem : MonoBehaviour
 
     private Salud salud;
 
+    [SerializeField] private AudioClip sonidoRecogerItem;
+
     private void Start()
     {
         // Obtener el componente Puntaje del mismo GameObject
@@ -18,20 +20,28 @@ public class ContactoItem : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            ReproducirSonido();
             Item item = other.GetComponent<Item>();
+            other.enabled = false;
             if (item.ObjetoProvocaInvisibilidad())
             {
                 salud.ActivarInvencibilidad();
             }
-            Debug.Log("Objeto recogido: " + other.name);
-            Debug.Log("Invencibilidad: " + item.ObjetoProvocaInvisibilidad());
 
             if (puntajeScript != null)
             {
                 puntajeScript.SumarPuntaje(1);
             }
+            Destroy(other.gameObject, sonidoRecogerItem.length);
+        }
+    }
 
-            Destroy(other.gameObject);
+    private void ReproducirSonido()
+    {
+        if (sonidoRecogerItem != null)
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(sonidoRecogerItem);
         }
     }
 }
